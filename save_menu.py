@@ -63,6 +63,7 @@ def start():
                 sg.popup_no_wait('ERROR: Must specify VALID width and height...',title='ERROR')
                 print(e)
             if data_ok:
+                window.close()
                 return [values['-DATASTRUCTURE-'], x, y]
         
 
@@ -82,11 +83,12 @@ def save(save_data:list, save_width=None, save_name=None):
     ]
 
     ###Building Window
-    window = sg.Window('SAVE UR BMP', layout, size=(450,200))
+    window = sg.Window('SAVE UR BMP', layout, size=(450,250))
 
     while True:
         event, values = window.read()
         if event == sg.WIN_CLOSED or event == 'Exit':
+            window.close()
             return False
         elif event == "Submit":
             raw_name = values['-NAME-']
@@ -118,5 +120,6 @@ def save(save_data:list, save_width=None, save_name=None):
                     with open(file_name, 'w') as the_file:
                         the_file.write(file_out)
                     sg.popup_no_wait('Saved!')
+                    window.close()
                     break
     return True

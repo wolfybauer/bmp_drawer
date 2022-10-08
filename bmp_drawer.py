@@ -66,4 +66,5 @@ if __name__ == "__main__":
     while is_running:
         unsaved_states = main(canvas_x, canvas_y, data_name, unsaved_states)
         if save_menu.save(unsaved_states, canvas_x, data_name):
-            is_running = False
+            #is_running = False
+            pass
